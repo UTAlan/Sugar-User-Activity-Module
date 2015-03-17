@@ -9,3 +9,4 @@ Installs a custom module in SugarCRM that allows you to view all Activities in a
 
 ## Feature Requests
 * Compatibility with Sugar 7
+* Compatibility with Reports module

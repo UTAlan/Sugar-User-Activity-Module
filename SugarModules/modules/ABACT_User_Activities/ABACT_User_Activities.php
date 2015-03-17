@@ -7,6 +7,22 @@ class ABACT_User_Activities extends ABACT_User_Activities_sugar {
 		parent::ABACT_User_Activities_sugar();
 	}
 
+	function loadFromRow($arr) {
+		$this->populateFromRow($arr);
+
+		// This was being skipped in 6.7 for some reason, manually setting it
+		if(empty($this->assigned_user_name) && !empty($arr['assigned_user_name'])) {
+			$this->assigned_user_name = $arr['assigned_user_name'];
+		}
+
+		// Don't think I need all this
+		//$this->processed_dates_times = array();
+        //$this->check_date_relationships_load();
+        //$this->fill_in_additional_list_fields();
+        //if($this->hasCustomFields())$this->custom_fields->fill_relationships();
+		//$this->call_custom_logic("process_record");
+	}
+
 	function create_new_list_query($order_by, $where, $filter, $params, $show_deleted, $join_type, $return_array, $parentbean, $singleSelect) {
 		global $app_list_strings;
 		$app_list_strings['MSG_EMPTY_LIST_VIEW_NO_RESULTS'] = 'You currently have no records saved.';
