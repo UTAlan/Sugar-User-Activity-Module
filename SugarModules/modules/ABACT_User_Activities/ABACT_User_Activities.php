@@ -33,10 +33,29 @@ class ABACT_User_Activities extends ABACT_User_Activities_sugar {
 		$where = str_replace('_cstm', '', $ret_array['where']);
 		$where = str_replace('abact_user_activities', 'act', $where);
 
-		// For Searching on these fields
-		//$where = str_replace('module', '?', $where);
-		//$where = str_replace('related_module', '?', $where);
-		//$where = str_replace('related_name', '?', $where);
+		// Extract custom fields from WHERE to outer query
+		$where_temp = str_replace('where ', '', $where);
+		$where_arr = explode(' AND ', $where_temp);
+		$paren_beg = $paren_end = '';
+		$where_outside_arr = array();
+		foreach($where_arr as $k=>$w) {
+			if(strpos($w, 'act.module') !== false || strpos($w, 'act.related_module') !== false || strpos($w, 'act.related_name') !== false) {
+				$open = substr_count($w, '(');
+				$closed = substr_count($w, ')');
+				$diff = ($open - $closed);
+				if($diff > 0) {
+					$paren_beg .= '(';
+					$w = preg_replace('/\(/', '', $w, $diff);
+				} else if ($diff < 0) {
+					$paren_end .= ')';
+					$w = preg_replace('/\)/', '', $w, abs($diff));
+				}
+				$where_outside_arr[] = str_replace('act.', '', $w);
+				unset($where_arr[$k]);
+			}
+		}
+		$where = ' where ' . $paren_beg . implode(' AND ', $where_arr) . $paren_end;
+
 
 		$modules = array('calls', 'emails', 'meetings', 'notes', 'tasks');
 		$related = array('accounts', 'bugs', 'cases', 'contacts', 'leads', 'opportunities', 'project', 'project_task', 'prospects', 'tasks');
@@ -58,14 +77,15 @@ class ABACT_User_Activities extends ABACT_User_Activities_sugar {
 			}
 			$from .= ' LEFT JOIN users u ON u.id = act.assigned_user_id ' . $where . ' ) ';
 		}
-		$from .= ' ) AS t1';
+		$from .= ' ) AS t1 ';
+		if(!empty($where_outside_arr)) {
+			$from .= ' WHERE ' . implode(' AND ', $where_outside_arr);
+		}
 
 		$ret_array['from'] = $from;
         $ret_array['from_min'] = '';
         $ret_array['where'] = '';
         $ret_array['order_by'] = ' ORDER BY ' . $order_by;
-
-		//echo '<pre>'.print_r($ret_array, true).'</pre>';
 
         return $ret_array;
     }

@@ -10,8 +10,9 @@ Installs a custom module in SugarCRM that allows you to view all Activities in a
 **1.0.0 (2015-03-17)** - Initial release.
 
 ## Known Issues
-* Adding "Module", "Related Module", or "Related Name" to Search layout works, but searching by these fields results in 0 records returned.
+* ~~Adding "Module", "Related Module", or "Related Name" to Search layout works, but searching by these fields results in 0 records returned.~~ - Fixed 3/17/15
 
 ## Feature Requests
 * Compatibility with Sugar 7
 * Compatibility with Reports module
+* Ability to export records
