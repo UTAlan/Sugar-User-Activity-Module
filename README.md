@@ -8,6 +8,7 @@ Installs a custom module in SugarCRM that allows you to view all Activities in a
 
 ## Release Notes
 **1.1.0 (2015-03-17)** - Can now search by Module, Related Module, and Related Name.
+
 **1.0.0 (2015-03-17)** - Initial release.
 
 ## Known Issues
