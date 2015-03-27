@@ -17,19 +17,19 @@ array (
     'default' => true,
     'customCode' => '<a href="index.php?action=ajaxui#ajaxUILoc=index.php%3Fmodule%3D{$MODULE}%26action%3DDetailView%26record%3D{$ID}">{$NAME}</a>',
   ),
-  'RELATED_MODULE' =>
+  'PARENT_MODULE' =>
   array (
     'width' => '10%',
-    'label' => 'LBL_RELATED_MODULE',
+    'label' => 'LBL_PARENT_MODULE',
     'default' => true,
-    'customCode' => '{$RELATED_MODULE}',
+    'customCode' => '{$PARENT_MODULE}',
   ),
-  'RELATED_NAME' =>
+  'PARENT_NAME' =>
   array (
     'width' => '10%',
-    'label' => 'LBL_RELATED_NAME',
+    'label' => 'LBL_PARENT_NAME',
     'default' => true,
-    'customCode' => '<a href="index.php?action=ajaxui#ajaxUILoc=index.php%3Fmodule%3D{$RELATED_MODULE}%26action%3DDetailView%26record%3D{$RELATED_ID}">{$RELATED_NAME}</a>',
+    'customCode' => '<a href="index.php?action=ajaxui#ajaxUILoc=index.php%3Fmodule%3D{$PARENT_MODULE}%26action%3DDetailView%26record%3D{$PARENT_ID}">{$PARENT_NAME}</a>',
   ),
   'ASSIGNED_USER_NAME' =>
   array (

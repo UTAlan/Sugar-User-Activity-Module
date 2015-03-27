@@ -39,7 +39,7 @@ class ABACT_User_Activities extends ABACT_User_Activities_sugar {
 		$paren_beg = $paren_end = '';
 		$where_outside_arr = array();
 		foreach($where_arr as $k=>$w) {
-			if(strpos($w, 'act.module') !== false || strpos($w, 'act.related_module') !== false || strpos($w, 'act.related_name') !== false) {
+			if(strpos($w, 'act.module') !== false || strpos($w, 'act.related_module') !== false || strpos($w, 'act.parent_name') !== false) {
 				$open = substr_count($w, '(');
 				$closed = substr_count($w, ')');
 				$diff = ($open - $closed);
@@ -65,15 +65,15 @@ class ABACT_User_Activities extends ABACT_User_Activities_sugar {
         $from = ' FROM ( ';
 		foreach($modules as $k=>$module) {
 			if($k > 0) { $from .= ' UNION '; }
-			$from .= ' ( SELECT act.id, act.name, act.date_entered, act.date_modified, "' . ucfirst($module) . '" AS module, act.parent_type AS related_module, act.parent_id AS related_id, act.assigned_user_id, CONCAT(u.first_name, " ", u.last_name) AS assigned_user_name, ';
+			$from .= ' ( SELECT act.id, act.name, act.date_entered, act.date_modified, "' . ucfirst($module) . '" AS module, act.related_type AS related_module, act.related_id AS related_id, act.assigned_user_id, CONCAT(u.first_name, " ", u.last_name) AS assigned_user_name, ';
 			$count = '';
-			foreach($related as $rel) {
-				$from .= ' IF( ' . $rel . '.id IS NOT NULL, ' . (in_array($rel, $concat) ? ' CONCAT( ' . $rel . '.first_name, " ", ' . $rel . '. last_name), ' : $rel . '.name, ');
+			foreach($related as $r) {
+				$from .= ' IF( ' . $r . '.id IS NOT NULL, ' . (in_array($r, $concat) ? ' CONCAT( ' . $r . '.first_name, " ", ' . $r . '. last_name), ' : $r . '.name, ');
 				$count .= ' ) ';
 			}
-			$from .= ' "" ' . $count . ' AS related_name FROM ' . $module . ' act ';
-			foreach($related as $rel) {
-				$from .= ' LEFT JOIN ' . $rel . ' ON ' . $rel . '.id = act.parent_id ';
+			$from .= ' "" ' . $count . ' AS parent_name FROM ' . $module . ' act ';
+			foreach($related as $r) {
+				$from .= ' LEFT JOIN ' . $r . ' ON ' . $r . '.id = act.parent_id ';
 			}
 			$from .= ' LEFT JOIN users u ON u.id = act.assigned_user_id ' . $where . ' ) ';
 		}
