@@ -2,7 +2,7 @@
 Installs a custom module in SugarCRM that allows you to view all Activities in a single List View.
 
 ## Instructions
-1. Upload and install via Admin > Module Loader in a Sugar 6.x or 7.x instance.
+1. Download [the package](https://github.com/UTAlan/Sugar-User-Activity-Module/raw/master/UserActivities.zip), then upload and install via Admin > Module Loader in a Sugar 6.x or 7.x instance.
 2. Navigate to the User Activities module from the navigation bar.
 
 ## Release Notes
