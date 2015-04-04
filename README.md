@@ -6,7 +6,9 @@ Installs a custom module in SugarCRM that allows you to view all Activities in a
 2. Navigate to the User Activities module from the navigation bar.
 
 ## Release Notes
-**1.1.1 (2015-03-27)** - Compatibility with Sugar 7
+**1.1.2 (2015-04-04)** - Fixing 6.x query.
+
+**1.1.1 (2015-03-27)** - Compatibility with Sugar 7.
 
 **1.1.0 (2015-03-17)** - Can now search by Module, Related Module, and Related Name.
 
