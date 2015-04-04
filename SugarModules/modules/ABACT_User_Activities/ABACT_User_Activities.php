@@ -65,7 +65,7 @@ class ABACT_User_Activities extends ABACT_User_Activities_sugar {
         $from = ' FROM ( ';
 		foreach($modules as $k=>$module) {
 			if($k > 0) { $from .= ' UNION '; }
-			$from .= ' ( SELECT act.id, act.name, act.date_entered, act.date_modified, "' . ucfirst($module) . '" AS module, act.related_type AS related_module, act.related_id AS related_id, act.assigned_user_id, CONCAT(u.first_name, " ", u.last_name) AS assigned_user_name, ';
+			$from .= ' ( SELECT act.id, act.name, act.date_entered, act.date_modified, "' . ucfirst($module) . '" AS module, act.parent_type AS related_module, act.parent_id AS related_id, act.assigned_user_id, CONCAT(u.first_name, " ", u.last_name) AS assigned_user_name, ';
 			$count = '';
 			foreach($related as $r) {
 				$from .= ' IF( ' . $r . '.id IS NOT NULL, ' . (in_array($r, $concat) ? ' CONCAT( ' . $r . '.first_name, " ", ' . $r . '. last_name), ' : $r . '.name, ');
