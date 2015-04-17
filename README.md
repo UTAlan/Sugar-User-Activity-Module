@@ -22,3 +22,6 @@ Installs a custom module in SugarCRM that allows you to view all Activities in a
 * Compatibility with Reports module
 * Ability to export records
 * ~~Compatibility with Sugar 7~~ - Added 3/27/15
+
+## Support
+If you need support for this plugin, please feel free to contact me at alan@alanbeam.net
