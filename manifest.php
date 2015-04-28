@@ -1,6 +1,6 @@
 <?php
 $manifest = array (
-    'acceptable_sugar_flavors' => array('CE', 'PRO', 'ENT', 'ULT'),
+    'acceptable_sugar_flavors' => array('CE', 'PRO', 'CORP', 'ENT', 'ULT'),
     'acceptable_sugar_versions' => array (
         'exact_matches' => array(),
         'regex_matches' => array('6\\.[0-9]\\.[0-9]', '7\\.[0-9]\\.[0-9]', '7\\.[0-9]\\.[0-9]\\.[0-9]'),
@@ -10,9 +10,9 @@ $manifest = array (
     'icon' => '',
     'is_uninstallable' => true,
     'name' => 'User_Activities',
-    'published_date' => '2015-04-04 00:00:00',
+    'published_date' => '2015-04-27 00:00:00',
     'type' => 'module',
-    'version' => '1.1.2',
+    'version' => '1.1.3',
     'key' => 'ABACT',
     'readme' => '',
     'type' => 'module',

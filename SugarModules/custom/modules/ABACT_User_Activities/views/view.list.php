@@ -9,7 +9,7 @@ class ABACT_User_ActivitiesViewList extends ViewList {
  	}
 
     function display() {
-        echo '<style type = "text/css">span.utils a.utilsLink { display:none !important; } #shortcuts > span > span:first-child { display: none !important; } table.list.view > tbody > tr > td:first-child { display: none; } table.list.view > tbody > tr.pagination > td:first-child { display: table-cell; } table.list.view > tbody > tr > td:nth-child(2) > a { display: none; }</style>';
+        echo '<style type = "text/css">span.utils a.utilsLink { display:none !important; } #shortcuts > span > span:first-child { display: none !important; } table.list.view > tbody > tr > td:first-child, table.list.view > thead > tr > td:first-child { display: none; } table.list.view > tbody > tr.pagination > td:first-child { display: table-cell; } table.list.view > tbody > tr > td:nth-child(2) > a { display: none; }</style>';
 
         if(!$this->bean || !$this->bean->ACLAccess('list')){
             ACLController::displayNoAccess();
